@@ -2,6 +2,10 @@ import axios from "axios";
 import client from "./src/client";
 import { createGenerateClassName } from "@material-ui/core/styles";
 import gql from "graphql-tag";
+import fs from "fs";
+import { markdown } from "markdown";
+
+const marked = require("marked");
 const generateClassName = createGenerateClassName();
 
 const GET_USERS = gql`
@@ -51,7 +55,35 @@ export default {
             user
           })
         }))
+      },
+      {
+        path: "/about",
+        component: "src/containers/About",
+        getData: () => ({
+          markdown: markdown.toHTML(fs.readFileSync("./src/test.md", "utf-8"))
+        })
       }
     ];
+  },
+
+  webpack: config => {
+    const renderer = new marked.Renderer();
+
+    config.module.rules[0].oneOf.unshift({
+      test: /\.md$/,
+      use: [
+        {
+          loader: "html-loader"
+        },
+        {
+          loader: "markdown-loader",
+          options: {
+            renderer
+          }
+        }
+      ]
+    });
+
+    return config;
   }
 };

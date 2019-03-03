@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import { withRouteData } from "react-static";
 
-export default () => (
-  <div>
-    <p>React Static is a progressive static site generator for React.</p>
-  </div>
-)
+export default withRouteData(({ markdown }) => (
+  <div dangerouslySetInnerHTML={{ __html: markdown }} />
+));
