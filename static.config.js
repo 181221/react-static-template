@@ -8,6 +8,16 @@ import { markdown } from "markdown";
 const marked = require("marked");
 const generateClassName = createGenerateClassName();
 
+const GET_PETS = gql`
+  {
+    pets {
+      age
+      description
+      name
+    }
+  }
+`;
+
 const GET_USERS = gql`
   {
     users {
@@ -17,6 +27,7 @@ const GET_USERS = gql`
     }
   }
 `;
+
 export default {
   plugins: [
     [
@@ -36,13 +47,19 @@ export default {
   }),
 
   getRoutes: async () => {
-    const {
+    /*const {
       data: { users }
     } = await client.query({
       query: GET_USERS
+    });*/
+    const {
+      data: { pets }
+    } = await client.query({
+      query: GET_PETS
     });
+    console.log(pets);
     return [
-      {
+      /*{
         path: "/user",
         component: "src/pages/user",
         getData: () => ({
@@ -55,10 +72,16 @@ export default {
             user
           })
         }))
+      },*/
+      {
+        path: "/pet",
+        getData: () => ({
+          pets,
+          markdown: markdown.toHTML(pets[0].description)
+        })
       },
       {
         path: "/about",
-        component: "src/containers/About",
         getData: () => ({
           markdown: markdown.toHTML(fs.readFileSync("./src/test.md", "utf-8"))
         })

@@ -27,6 +27,7 @@
     "react-dom": "^16.8.1",
     "react-hot-loader": "^4.3.12",
     "react-jss": "^8.6.1",
+    "react-markdown": "^4.0.6",
     "react-static": "^6.0.18",
     "react-static-plugin-jss": "^6.3.0",
     "react-static-plugin-styled-components": "^6.3.0",
