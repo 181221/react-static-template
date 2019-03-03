@@ -1,0 +1,32 @@
+{
+  "name": "react-static-example-basic",
+  "private": true,
+  "scripts": {
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "react-static build",
+    "bundle": "react-static bundle",
+    "export": "react-static export",
+    "serve": "serve dist -p 3000 -s"
+  },
+  "dependencies": {
+    "@reach/router": "^1.2.1",
+    "apollo-cache-inmemory": "^1.5.1",
+    "apollo-client": "^2.5.1",
+    "apollo-link-http": "^1.5.11",
+    "axios": "^0.18.0",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
+    "node-fetch": "^2.3.0",
+    "react": "^16.8.1",
+    "react-apollo": "^2.5.1",
+    "react-dom": "^16.8.1",
+    "react-hot-loader": "^4.3.12",
+    "react-static": "^6.0.18",
+    "react-static-plugin-styled-components": "^6.3.0"
+  },
+  "devDependencies": {
+    "eslint-config-react-tools": "1.x.x",
+    "serve": "10.1.1"
+  }
+}
