@@ -1,3 +1,1 @@
-# React-Static - Basic Template
-
-To use this template, run `react-static create` and use the `basic` template.
+# React-Static - Template with styled-components, material ui and apollo client
